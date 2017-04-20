@@ -1,0 +1,29 @@
+{
+	"name": "diqa/semantic-translation",
+	"type": "mediawiki-extension",
+	"description": "Provides Wiki-Page-ID / Title translation for SemanticForms",
+	"keywords": [
+		"DIQA", "Title translation", "SemanticForms", "SMW"
+	],
+	
+	"license": "GPL v2.0",
+	"authors": [
+		{
+			"name": "Kai Kühn"
+			
+		}
+	],
+	"require": {
+		
+	},
+	
+	"autoload": {
+		"psr-4": {
+			"DIQA\\": "src/"
+		},
+		"files" : [
+			"DIQAsemanticTranslation.php"
+		]
+		
+	}
+}
