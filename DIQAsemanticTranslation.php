@@ -33,7 +33,7 @@ global $wgResourceModules;
 // register extension
 $wgExtensionCredits[ 'odb' ][] = array(
 	'path' => __FILE__,
-	'name' => 'DIQA Semantic Translation',
+	'name' => 'Semantic Translation',
 	'author' => array( 'DIQA Projektmanagement GmbH' ),
 	'license-name' => 'GPL-2.0+',
 	'url' => 'http://www.diqa-pm.com',
@@ -55,7 +55,7 @@ function wfDIQASemanticTitleTranslationRegisterParserHooks(Parser $parser)
 {
 	$currentTitle = RequestContext::getMain()->getTitle();
 
-	Hooks::register('sfCreateFormField', function (&$form_field, &$cur_value_in_template, $submitted) {
+	Hooks::register('PageForms::CreateFormField', function (&$form_field, &$cur_value_in_template, $submitted) {
 		SemanticTitleTranslator::translateTitle($form_field, $cur_value_in_template, $submitted);
 	});
 
