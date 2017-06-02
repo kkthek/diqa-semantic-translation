@@ -141,7 +141,7 @@ class SemanticTitleTranslator {
 		
 		global $wgContLang;
 		$categoryNsText = $wgContLang->getNsText( NS_CATEGORY );
-		return array_map(function($e) {
+		return array_map(function($e) use ($categoryNsText) {
 			return "$categoryNsText:$e";
 		}, $categories);
 	}
