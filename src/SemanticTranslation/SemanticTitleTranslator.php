@@ -189,7 +189,7 @@ class SemanticTitleTranslator {
 			return;
 		}
 
-		preg_match_all('/\[([^]]*)\]/', $input_field->getInputName(), $matches);
+		preg_match_all('/\[([^]]*)\]/', is_string($input_field) ? $input_field : $input_field->getInputName(), $matches);
 		if (!isset($matches[1])) {
 			return;
 		}
