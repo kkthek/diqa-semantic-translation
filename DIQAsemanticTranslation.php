@@ -45,7 +45,7 @@ $dir = dirname( __FILE__ );
 
 $wgExtensionMessagesFiles['DIQAsemanticTranslation'] = $dir . '/DIQAsemanticTranslation.i18n.php';
 $wgHooks['ParserFirstCallInit'][] = 'wfDIQAsemanticTranslationSetup';
-
+$wgHooks['pf_displayTab'][] = 'wfDIQAsemanticTranslationRegisterDisplayTabHook';
 $wgHooks['ParserFirstCallInit'][] = 'wfDIQASemanticTitleTranslationRegisterParserHooks';
 
 global $wgSTFieldsToTranslate;
@@ -65,6 +65,27 @@ function wfDIQASemanticTitleTranslationRegisterParserHooks(Parser $parser)
 
 	return true;
 }
+
+
+/**
+ * Checks if page should have formedit link.
+ *
+ * @param Title $title
+ * @param boolean (out) $result
+ * @return boolean
+ */
+function wfDIQAsemanticTranslationRegisterDisplayTabHook($title, & $result) {
+    if (preg_match('/^[A-z]+_[0-9_]+$/', $title->getDBkey()) === 0) {
+        // if page is does not follow naming convention for automatically
+        // generated pages, do not show formedit in display tab
+        $result = false;
+    } else {
+        // show formedit in display tab
+        $result = true;
+    }
+    return true;
+}
+
 /**
  * Initializations for DIQAsemanticTranslation
  */
